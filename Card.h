@@ -13,33 +13,25 @@ using namespace std;
 class Card{
 
    public:
-        static const int totalFaces = 13; // total number of faces      //! 數字1-13
-        static const int totalSuits = 4; // total number of suits花色   //! spade 黑桃    heart 紅心    diamond 方塊    club 梅花
+      //string array的size
+      static const int totalFaces = 13; // total number of faces      //! 數字1-13
+      static const int totalSuits = 4;  // total number of suits花色   //! spade 黑桃    heart 紅心    diamond 方塊    club 梅花
 
-      Card( int , int ); // initialize face and suit
-      string toString(); // returns a string representation of a Card
+      Card(int cardFace, int cardSuit); // constructor: initialize face and suit
 
-      // get the card's face
-      int getFace() const{
-         return face;
-      } // end function getFace
+      int getFace(void) const;// get the card's face
+      int getSuit(void) const;// get the card's suit
 
-      // get the card's suit
-      int getSuit() const{
-         return suit;
-      } // end function getSuit
+      string toString(void); // returns a string representation of a Card
 
    private:
-      int face;
-      int suit;
+      int face;//這張卡的數字對應的index---用來從string Array中取出face string
+      int suit;//這張卡的花色對應的index---用來從string Array中取出suit string //!這邊預設        0-spade 黑桃      1-heart 紅心      2-diamond 方塊      3-club 梅花
 
+      //dtype為string的Array
       static const string faceNames[ totalFaces ];
       static const string suitNames[ totalSuits ];
 
 }; // end class Card
 
-
-
-					
-   												
 #endif
