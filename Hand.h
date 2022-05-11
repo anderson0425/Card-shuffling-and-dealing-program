@@ -1,6 +1,6 @@
 // Exercise 10.11 Solution: Hand.h
 //todo:  Stores and calculates attributes of a hand of cards.
-//!5張卡片的特質
+//!手上目前的所有卡片的特質
 
 //* 中間
 
@@ -29,8 +29,9 @@ class Hand{
       bool straight() const;
 
    private:
-      vector< Card > hand; // our hand
-      vector< int > faceCount; // number of each face
+      //!想像成array
+      vector< Card > hand; // our hand  //!想像成一個array，只是dtype是Card object    目前手上的卡片
+      vector< int > faceCount; // number of each face  //!想像成一個array，只是dtype是int
 
 }; // end class Hand
 
