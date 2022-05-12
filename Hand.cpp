@@ -4,6 +4,7 @@
 #include "DeckOfCards.h"
 #include "Hand.h"
 #include<iostream>
+//#include <iomanip>
 using namespace std;
 
 // constructor takes 5 cards from Deck
@@ -42,7 +43,7 @@ Hand:: Hand(const Hand & right){
 void Hand:: print(void) const{ 
 	cout << "In hand:\n";
 	for(int i=0;   i < ((*this).hand.size());   i++)
-		cout << i << "  " << (*this).hand[i].toString(); 
+		cout << i << "\t" << (*this).hand[i].toString(); 
     cout << "\n";
 }
 

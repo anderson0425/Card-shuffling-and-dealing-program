@@ -6,23 +6,15 @@
 #include<iostream>
 using namespace std;
 #include <stdio.h>
+//#include <iomanip>
 
 // constructor initializes deck
 DeckOfCards:: DeckOfCards(void){ //!52張卡片，因此會生成有52個card object，並且初始化花色跟數字兩個int。 (0-12跟0-3)
-
-    //resize
-    //(*this).deck.resize(52);
-
-    
 
     //查看目前分配到的記憶體空間大小
     cout << "\nSize : " << (*this).deck.size()<<"\n";
     cout << "Capacity : " << (*this).deck.capacity()<<"\n";
     cout << "Max_Size : " << (*this).deck.max_size()<<"\n";
-
-    ////先要求記憶體
-    //(*this).deck.reserve(52);
-
 
     // fill the array with the values in order.
     //? i / 13 = j
@@ -34,6 +26,7 @@ DeckOfCards:: DeckOfCards(void){ //!52張卡片，因此會生成有52個card ob
 		card_insert.setFace(i%13); //k
         (*this).deck.push_back(card_insert);  //插入值且自動擴充記憶體  裡面要放符合dtype的資料，在這裡就是card object
 	} 
+
 	//for(int i=0;  i<52;  i++){  //?i = j * 13 + k
     //    for(int j=0;  j<13;  j++){ //0-12
     //        for(int k=0;  k<4;  k++){//0-4
@@ -65,7 +58,7 @@ DeckOfCards:: DeckOfCards(void){ //!52張卡片，因此會生成有52個card ob
 //自己新增的--印出牌組
 void DeckOfCards:: print_DeckOfCards(void) const{
 	for(int i=0;   i < ((*this).deck.size());   i++)
-		cout << i << "  " << (*this).deck[i].toString(); 
+		cout << i << "\t" << (*this).deck[i].toString(); 
     cout << "\n";
     cout << (*this).currentCard << "\n\n";
 }
