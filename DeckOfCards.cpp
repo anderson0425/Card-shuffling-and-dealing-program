@@ -60,7 +60,7 @@ void DeckOfCards:: print_DeckOfCards(void) const{
 	for(int i=0;   i < ((*this).deck.size());   i++)
 		cout << i << "\t" << (*this).deck[i].toString(); 
     cout << "\n";
-    cout << (*this).currentCard << "\n\n";
+    cout << "currentCard of Deck: " << (*this).currentCard << "\n\n";
 }
 
 // 洗牌
@@ -114,7 +114,8 @@ Card DeckOfCards:: dealCard(void){
 bool DeckOfCards:: moreCards(void) const{
     // checks if DeckOfCards is empty or not
     if ((*this).currentCard < 52){  // if ((*this).deck.empty() == false){
-        cout << "\nDeckOfCards is not empty\n";
+        //cout << "\nDeckOfCards is not empty\n";
+        cout << "\nnow index of Deck is: "<<(*this).currentCard <<"\n";
         return true;
     }   
     else{  //(*this)currentCard >= 52

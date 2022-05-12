@@ -33,24 +33,26 @@ int main(){
     cout << "\n>>after shuffle: \n";
     cout << "\nthe Deck: \n";
     D1.print_DeckOfCards();
-//
-//    int i=0;
-//    while (1){
-//        c1 = D1.dealCard();
-//        i++;
-//
-//        if(i==50)  cout <<"at"<< i << D1.moreCards();
-//        else if(i==51)  cout <<"at"<< i << D1.moreCards();
-//        else break;
-//
-//        if(D1.moreCards()==false){
-//            cout<< "empty at "<< i <<"\n";
-//            break;
-//        }
-//    }
+
+    int k=0;
+    while (k<50){
+        cout<< "===";
+        k++;
+    }
+    
+
+    int i=1;
+    while (1){
+        c1 = D1.dealCard();
+        //cout << "\ndeal Card+++ \n";
+        i++;
+
+        if(D1.moreCards()==false){
+            cout << "the dealt Card: \t";
+            cout << c1.toString();
+            cout<< "empty at "<< i <<"\n";
+            break;
+        }
+    }
 
 }
-
-
-
-//Card dealCard();
