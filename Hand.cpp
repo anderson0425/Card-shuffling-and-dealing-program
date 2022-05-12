@@ -7,6 +7,20 @@
 //#include <iomanip>
 using namespace std;
 
+#include <stdio.h>
+int One_Num_Times(vector< int > arr, int num){
+	int i = 0;
+	int times = 0;
+	for (i = 0; i < 5; i++){
+		if (arr[i] == num){
+			times++;
+		}
+	}
+	return times;
+}
+
+
+
 // constructor takes 5 cards from Deck
 //FIXME:把DECK前5個index的卡片傳給hand，並把那5個card從deck中移除。
 Hand:: Hand( DeckOfCards &deck ){   
@@ -43,6 +57,11 @@ Hand:: Hand( DeckOfCards &deck ){
 
 	////印出手牌
 	//(*this).print();
+
+	//for(int i=0;  i<5;  i++)
+	//	cout<<(*this).faceCount[i]<<" ";
+
+
 }
 
 
@@ -75,22 +94,102 @@ void Hand:: insert_CARD(const Card & insert_card){
 
 
 bool Hand:: pair(void) const{  //1組2個數字相同
-	return false;
+	int count[13][2];
+	for(int i=0;  i<13;  i++){
+		count[i][0] = i;
+		count[i][1] = One_Num_Times((*this).faceCount,  i);
+	}
+
+	int max_times = 0;
+	int num_for_max_times = 0;
+	int second_max_times = 0;
+	int second_num_for_max_times = 0;
+	for(int i=0;  i<13;  i++){
+		if(count[i][1]>max_times)  {
+			max_times = count[i][1];
+			num_for_max_times = count[i][0];
+		}
+		if((count[i][1]==2)&&(count[i][1]==max_times))  {
+			second_max_times = count[i][1];
+			second_num_for_max_times = count[i][0];
+		}
+	}
+	cout<<num_for_max_times<<" "<<max_times<<"\n";
+
+	if((max_times==2) && (second_max_times!=2))return true;
+	else return false;
 }
 
 
 bool Hand:: twoPair(void) const{  //2組各2個數字相同
-	return false;
+	int count[13][2];
+	for(int i=0;  i<13;  i++){
+		count[i][0] = i;
+		count[i][1] = One_Num_Times((*this).faceCount,  i);
+	}
+
+	int max_times = 0;
+	int num_for_max_times = 0;
+	int second_max_times = 0;
+	int second_num_for_max_times = 0;
+	for(int i=0;  i<13;  i++){
+		if(count[i][1]>max_times)  {
+			max_times = count[i][1];
+			num_for_max_times = count[i][0];
+		}
+		if((count[i][1]==2)&&(count[i][1]==max_times))  {
+			second_max_times = count[i][1];
+			second_num_for_max_times = count[i][0];
+		}
+	}
+	cout<<num_for_max_times<<" "<<max_times<<"\n";
+
+	if((max_times==2) && (second_max_times==2))return true;
+	else return false;
 }
 
 
 bool Hand:: threeOfAKind(void) const{  //1組3個數字相同
-	return false;
+	int count[13][2];
+	for(int i=0;  i<13;  i++){
+		count[i][0] = i;
+		count[i][1] = One_Num_Times((*this).faceCount,  i);
+	}
+
+	int max_times = 0;
+	int num_for_max_times = 0;
+	for(int i=0;  i<13;  i++){
+		if(count[i][1]>max_times)  {
+			max_times = count[i][1];
+			num_for_max_times = count[i][0];
+		}
+	}
+	cout<<num_for_max_times<<" "<<max_times<<"\n";
+
+	if(max_times==3)return true;
+	else return false;
 }
 
 
 bool Hand:: fourOfAKind(void) const{  //1組4個數字相同
-	return false;
+	int count[13][2];
+	for(int i=0;  i<13;  i++){
+		count[i][0] = i;
+		count[i][1] = One_Num_Times((*this).faceCount,  i);
+	}
+
+	int max_times = 0;
+	int num_for_max_times = 0;
+	for(int i=0;  i<13;  i++){
+		if(count[i][1]>max_times)  {
+			max_times = count[i][1];
+			num_for_max_times = count[i][0];
+		}
+	}
+	cout<<num_for_max_times<<" "<<max_times<<"\n";
+
+	if(max_times==4)return true;
+	else return false;
 }
 
 
@@ -100,6 +199,12 @@ bool Hand:: flush(void) const{  //5張花色都相同
 
 
 bool Hand:: straight(void) const{  //5張數字剛好連續 [x.....x+4]
-	return false;
+  	int S=1;
+  	for(int i=1; i < 4; i++) 
+	  	S = ((*this).faceCount[i]%13-(*this).faceCount[i+1]%13)*S;
+  	if(S==1 && ((*this).faceCount[0]%13-(*this).faceCount[1]%13==1 ||(*this).faceCount[0]%13-(*this).faceCount[1]%13==9)) 
+	  	S=1;
+  	else S=0;//若 S = 1, 表示順子
+  	return S; 
 }
 //?--------------------------------------------------------------------------------------------------------------
