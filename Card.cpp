@@ -23,8 +23,18 @@ int Card:: getSuit(void) const{
    return (*this).suit; //int 0-3
 }
 
+// set the card's face  //?我自己新增的，因為那兩個是private，外部改不了值，會讓deck constructor無法做事
+void Card:: setFace(int fa){
+	(*this).face = fa;
+};
+
+// set the card's suit  //?我自己新增的，因為那兩個是private，外部改不了值，會讓deck constructor無法做事
+void Card:: setSuit(int su){
+	(*this).suit = su;
+};
+
 //return type: string
-string Card:: toString(void) {
+string Card:: toString(void) const {  //?hi 10 const
 	return (*this).faceNames[getFace()] + " of " + (*this).suitNames[getSuit()] + "\n";
 	//ex:  faceNames[0] + "of" + suitNames[1];
 }

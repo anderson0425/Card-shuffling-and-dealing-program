@@ -23,7 +23,10 @@ class Card{
       int getFace(void) const;// get the card's face
       int getSuit(void) const;// get the card's suit
 
-      string toString(void); // returns a string representation of a Card
+      void setFace(int fa);// set the card's face  //?我自己新增的，因為那兩個是private，外部改不了值，會讓deck constructor無法做事
+      void setSuit(int su);// set the card's suit  //?我自己新增的，因為那兩個是private，外部改不了值，會讓deck constructor無法做事
+
+      string toString(void)const; // returns a string representation of a Card  //?hi 10 const
 
    private:
       int face;//這張卡的數字對應的index---用來從string Array中取出face string
