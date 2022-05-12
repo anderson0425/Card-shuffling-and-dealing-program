@@ -20,9 +20,9 @@ DeckOfCards:: DeckOfCards(void){ //!52張卡片，因此會生成有52個card ob
     // i = j * 13 + k
     // (*this).deck[i].suit = j;  (*this).deck[i].face = k;
 
-    //印出最一開始的牌組
-    cout<<"after constructed, DeckofCards now is...\n\n";
-	(*this).print_DeckOfCards();
+    ////印出最一開始的牌組
+    //cout<<"after constructed, DeckofCards now is...\n\n";
+	//(*this).print_DeckOfCards();
 
     //todo:      unsigned currentCard;   這裡要怎麼設定?又是什麼意思?
     (*this).currentCard = 0;  //FIXME:假設牌組最上面的牌的index=0，這裡將下一個抽牌的index設為0------使得接下抽出的牌是(*this).deck[i]
@@ -33,6 +33,7 @@ void DeckOfCards:: print_DeckOfCards(void) const{
 	for(int i=0;   i < ((*this).deck.size());   i++)
 		cout << i << "  " << (*this).deck[i].toString(); 
     cout << "\n";
+    cout << (*this).currentCard << "\n\n";
 }
 
 // 洗牌
@@ -74,7 +75,7 @@ Card DeckOfCards:: dealCard(void){
 
 
 //若是為true，表示牌組還有卡片  //FIXME:這裡的操作有點類似stack，雖然會把某個東西的值累加，但是deck內的值沒有被消失
-bool DeckOfCards:: moreCards() const{
+bool DeckOfCards:: moreCards(void) const{
     // checks if DeckOfCards is empty or not
     if ((*this)currentCard < 52){  // if ((*this).deck.empty() == false){
         cout << "\nDeckOfCards is not empty\n";
@@ -86,6 +87,7 @@ bool DeckOfCards:: moreCards() const{
     }
 }
 //-----------------------------------------------------------------------------------------------------------------
+
 
 //DeckOfCards::DeckOfCards(){
 //	for(int i=0; i<52; i++){

@@ -1,21 +1,18 @@
-//! 測試 Card object
-
-#include "Card.h"
+// 測試 Hand object
 #include <iostream>
 #include <iomanip>
 #include <string>
+#include "DeckOfCards.h" // DeckOfCards class definition
+#include "Hand.h" // Hand class definition
 using namespace std;
 
 int main(){
 
-    //Card(int cardFace = 12 , int cardSuit = 0)
-    Card c1(0,  3); //  "Ace",      "club"
-    Card c2(11, 2); //  "Queen",    "diamond"
-    Card c3(12, 0); //  "King",     "spade"
+    DeckOfCards D1; //牌組
 
-    cout<< "\nc1: " << c1.toString() << "\n";
-    cout<< "\nc2: " << c2.toString() << "\n";
-    cout<< "\nc3: " << c3.toString() << "\n";
+    //Hand( DeckOfCards &deck );
+    Hand h1(D1); //手牌: 一開始按照牌組的currentCard去抽依序的5張牌  [currentCard........(currentCard + 4)]      //FIXME:是這樣解讀嗎?
 
-} // end main
+    //h1.print();
+}
 

@@ -22,8 +22,8 @@ Hand:: Hand( DeckOfCards &deck ){
 
 	//將deck中拿出來的那5張卡片從牌組中移除--要pop嗎?還是只需要把deck.currentCard的值加5即可?  //FIXME:我猜只需要加5就好
 
-	//印出手牌
-	(*this).print();
+	////印出手牌
+	//(*this).print();
 }
 
 // copy constructor   //FIXME:這是我額外多加的，是必要的嗎?
@@ -51,32 +51,32 @@ void Hand:: print(void) const{
 // determine if we have the given scoring hand
 
 
-bool Hand:: pair() const{
+bool Hand:: pair(void) const{
 
 }
 
 
-bool Hand:: twoPair() const{
+bool Hand:: twoPair(void) const{
 
 }
 
 
-bool Hand:: threeOfAKind() const{
+bool Hand:: threeOfAKind(void) const{
 
 }
 
 
-bool Hand:: fourOfAKind() const{
+bool Hand:: fourOfAKind(void) const{
 
 }
 
 
-bool Hand:: flush() const{
+bool Hand:: flush(void) const{
 
 }
 
 
-bool Hand:: straight() const{
+bool Hand:: straight(void) const{
 
 }
 //?--------------------------------------------------------------------------------------------------------------

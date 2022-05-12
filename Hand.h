@@ -18,17 +18,17 @@ class Hand{
    public:
       // constructor takes 5 cards from Deck
       Hand( DeckOfCards &deck );
-      void print() const; // display hand
+      void print(void) const; // display hand
 
       Hand(const Hand & right); // copy constructor   //FIXME:這是我額外多加的，是必要的嗎?
 
       // determine if we have the given scoring hand
-      bool pair() const;
-      bool twoPair() const;
-      bool threeOfAKind() const;
-      bool fourOfAKind() const;
-      bool flush() const;
-      bool straight() const;
+      bool pair(void) const;
+      bool twoPair(void) const;
+      bool threeOfAKind(void) const;
+      bool fourOfAKind(void) const;
+      bool flush(void) const;
+      bool straight(void) const;
 
    private:
       //!想像成array

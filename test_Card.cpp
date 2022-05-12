@@ -1,4 +1,4 @@
-//! 測試 Card object
+// 測試 Card object
 
 #include "Card.h"
 #include <iostream>
