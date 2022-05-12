@@ -18,6 +18,7 @@ class Card{
       static const int totalSuits = 4;  // total number of suits花色   //! spade 黑桃    heart 紅心    diamond 方塊    club 梅花
 
       Card(int cardFace, int cardSuit); // constructor: initialize face and suit
+      Card(const Card & right); // copy constructor   //FIXME:這是我額外多加的，是必要的嗎?
 
       int getFace(void) const;// get the card's face
       int getSuit(void) const;// get the card's suit

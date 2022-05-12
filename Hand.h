@@ -20,6 +20,8 @@ class Hand{
       Hand( DeckOfCards &deck );
       void print() const; // display hand
 
+      Hand(const Hand & right); // copy constructor   //FIXME:這是我額外多加的，是必要的嗎?
+
       // determine if we have the given scoring hand
       bool pair() const;
       bool twoPair() const;
