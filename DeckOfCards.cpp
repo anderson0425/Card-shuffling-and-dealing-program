@@ -8,6 +8,14 @@ using namespace std;
 #include <stdio.h>
 //#include <iomanip>
 
+
+// Function to return as return by reference
+//可用 reference(a) = 13;  來賦值，其中a是int
+vector<Card> & reference(vector<Card> &  x){
+    return x;
+}
+
+
 // constructor initializes deck
 DeckOfCards:: DeckOfCards(void){ //!52張卡片，因此會生成有52個card object，並且初始化花色跟數字兩個int。 (0-12跟0-3)
 
@@ -61,6 +69,18 @@ void DeckOfCards:: print_DeckOfCards(void) const{
 		cout << i << "\t" << (*this).deck[i].toString(); 
     cout << "\n";
     cout << "currentCard of Deck: " << (*this).currentCard << "\n\n";
+}
+
+void DeckOfCards:: set_currentCard(int index){//自己新增的
+    (*this).currentCard = (unsigned)index;  //FIXME:這樣轉型可嗎?
+}
+
+unsigned DeckOfCards:: get_currentCard(void){//自己新增的
+    return (*this).currentCard;
+}
+
+vector<Card> & DeckOfCards:: get_deck_by_reference(void){  //!!!reference這樣寫可以過嗎?
+    return reference((*this).deck);
 }
 
 // 洗牌

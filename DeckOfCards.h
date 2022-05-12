@@ -22,6 +22,9 @@ class DeckOfCards{
       Card dealCard(void); // deals cards in deck //FIXME:如何給HAND?  //!抽牌?  回傳一張卡片到Hand object 
       bool moreCards(void) const; // are there any more cards left  //!牌組是否還有剩下的髂片，還是抽完了--------若是為1，表示還有卡片
       void print_DeckOfCards(void) const; //自己新增的
+      void set_currentCard(int);//自己新增的
+      unsigned get_currentCard(void);//自己新增的
+      vector<Card> & get_deck_by_reference(void);  //Return reference
 
    private:
       vector< Card > deck; // represents deck of cards  //!DeckOfCards object一開始會有52個card objects

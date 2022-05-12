@@ -21,6 +21,7 @@ class Hand{
       void print(void) const; // display hand
 
       Hand(const Hand & right); // copy constructor   //FIXME:這是我額外多加的，是必要的嗎?
+      void insert_CARD(const Card & insert_card);
 
       // determine if we have the given scoring hand
       bool pair(void) const;
