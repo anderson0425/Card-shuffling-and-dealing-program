@@ -8,7 +8,6 @@ using namespace std;
 
 int main(){
 
-    
     DeckOfCards D1; //牌組
     cout << "\n>>after DeckOfCards constructed: \n";
     cout << "\nthe Deck: \n";
@@ -41,6 +40,7 @@ int main(){
     }
     
 
+    //一直拿出卡片，直到牌組沒卡片
     int i=1;
     while (1){
         c1 = D1.dealCard();
@@ -56,3 +56,5 @@ int main(){
     }
 
 }
+
+
