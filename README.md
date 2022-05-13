@@ -1,6 +1,6 @@
 # Card-shuffling-and-dealing-program
 1. **ex10_11.cpp、test_Card.cpp、test_DeckOfCards.cpp是driver program**
-2. Card.cpp 、 Card.h、test_Card
+2. Card.cpp 、 Card.h
     1. test_Card是用來測試Card object生成及功能是否正常
     2. 經由test_Card測試，目前Card object有照預想中生成了。
 
