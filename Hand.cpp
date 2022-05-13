@@ -50,45 +50,45 @@ int One_Num_Times(vector< int > arr, int num){
 // constructor takes 5 cards from Deck
 //FIXME:把DECK前5個index的卡片傳給hand，並把那5個card從deck中移除。
 Hand:: Hand( DeckOfCards &deck ){
-    //Card card_insert(1,1);  //vector.push_back()需要
-	////用從deck中拿出來的5張卡片的值做hand手中的卡片的初始化
-	////一開始會從洗好的牌組裡抽5張卡片
-	//for(int i=0;  i<5;  i++){
-	//	card_insert.setSuit(  ((deck.get_deck_by_reference())[deck.get_currentCard() + i]).getSuit()  ); //card.suit = deck[currentCard].suit
-	//	card_insert.setFace(  ((deck.get_deck_by_reference())[deck.get_currentCard() + i]).getFace()  );
-	//	(*this).insert_CARD(card_insert); //!!內有push back，故可以自動擴充記憶體空間
-	//	int insert_face = ((deck.get_deck_by_reference())[deck.get_currentCard() + i]).getFace();
-	//	(*this).faceCount.push_back(insert_face);
-	//}
-	//unsigned temp_index = deck.get_currentCard();
-	//deck.set_currentCard(temp_index + 5);  //由於取出5張，因此照理來說，應該有5張消失了  //FIXME:需要這段嗎?
-
-	//! testbench
-	//!------------------------------------------------------------------------------------------------
-	//int fa[5] = {1, 2, 3, 4, 5};
-	//int su[5] = {0, 0, 0, 0, 0};
-
-	//int fa[5] = {1, 2, 3, 4, 5};
-	//int su[5] = {1, 0, 0, 0, 0};
-
-	//int fa[5] = {10, 9, 0, 11, 12};
-	//int su[5] = {1, 0, 0, 0, 0};
-
-	int fa[5] = {9, 9, 9, 12, 9};
-	int su[5] = {1, 0, 0, 0, 0};
-
     Card card_insert(1,1);  //vector.push_back()需要
 	//用從deck中拿出來的5張卡片的值做hand手中的卡片的初始化
 	//一開始會從洗好的牌組裡抽5張卡片
 	for(int i=0;  i<5;  i++){
-		card_insert.setSuit(su[i]);
-		card_insert.setFace(fa[i]);
+		card_insert.setSuit(  ((deck.get_deck_by_reference())[deck.get_currentCard() + i]).getSuit()  ); //card.suit = deck[currentCard].suit
+		card_insert.setFace(  ((deck.get_deck_by_reference())[deck.get_currentCard() + i]).getFace()  );
 		(*this).insert_CARD(card_insert); //!!內有push back，故可以自動擴充記憶體空間
-		(*this).faceCount.push_back(fa[i]);
+		int insert_face = ((deck.get_deck_by_reference())[deck.get_currentCard() + i]).getFace();
+		(*this).faceCount.push_back(insert_face);
 	}
 	unsigned temp_index = deck.get_currentCard();
 	deck.set_currentCard(temp_index + 5);  //由於取出5張，因此照理來說，應該有5張消失了  //FIXME:需要這段嗎?
-	//!------------------------------------------------------------------------------------------------
+
+	////! testbench
+	////!------------------------------------------------------------------------------------------------
+	////int fa[5] = {1, 2, 3, 4, 5};
+	////int su[5] = {0, 0, 0, 0, 0};
+	//
+	////int fa[5] = {1, 2, 3, 4, 5};
+	////int su[5] = {1, 0, 0, 0, 0};
+	//
+	////int fa[5] = {10, 9, 0, 11, 12};
+	////int su[5] = {1, 0, 0, 0, 0};
+	//
+	////int fa[5] = {9, 9, 9, 12, 9};
+	////int su[5] = {1, 0, 0, 0, 0};
+	//
+    //Card card_insert(1,1);  //vector.push_back()需要
+	////用從deck中拿出來的5張卡片的值做hand手中的卡片的初始化
+	////一開始會從洗好的牌組裡抽5張卡片
+	//for(int i=0;  i<5;  i++){
+	//	card_insert.setSuit(su[i]);
+	//	card_insert.setFace(fa[i]);
+	//	(*this).insert_CARD(card_insert); //!!內有push back，故可以自動擴充記憶體空間
+	//	(*this).faceCount.push_back(fa[i]);
+	//}
+	//unsigned temp_index = deck.get_currentCard();
+	//deck.set_currentCard(temp_index + 5);  //由於取出5張，因此照理來說，應該有5張消失了  //FIXME:需要這段嗎?
+	////!------------------------------------------------------------------------------------------------
 }
 
 
