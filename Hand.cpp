@@ -8,6 +8,32 @@
 using namespace std;
 
 #include <stdio.h>
+
+vector< int >  insertionsort(vector< int > array){
+    int i, key, j; 
+    for (i = 1; i < 5; i++){ 
+        key = array[i]; 
+        j = i - 1; 
+ 
+        while (j >= 0 && array[j] > key){ 
+            array[j + 1] = array[j]; 
+            j = j - 1; 
+            //cout<<"* ";//�����٦binsertionsort
+        } 
+        array[j + 1] = key; 
+    } 
+
+	cout<<"\n\n";
+    for (i = 1; i < 5; i++){ 
+        cout<<array[i]<<" "; 
+    } 
+	cout<<"\n\n";
+
+	return array;
+} 
+
+
+
 int One_Num_Times(vector< int > arr, int num){
 	int i = 0;
 	int times = 0;
@@ -114,7 +140,7 @@ bool Hand:: pair(void) const{  //1組2個數字相同
 			second_num_for_max_times = count[i][0];
 		}
 	}
-	cout<<num_for_max_times<<" "<<max_times<<"\n";
+	//cout<<num_for_max_times<<" "<<max_times<<"\n";
 
 	if((max_times==2) && (second_max_times!=2))return true;
 	else return false;
@@ -142,7 +168,7 @@ bool Hand:: twoPair(void) const{  //2組各2個數字相同
 			second_num_for_max_times = count[i][0];
 		}
 	}
-	cout<<num_for_max_times<<" "<<max_times<<"\n";
+	//cout<<num_for_max_times<<" "<<max_times<<"\n";
 
 	if((max_times==2) && (second_max_times==2))return true;
 	else return false;
@@ -164,7 +190,7 @@ bool Hand:: threeOfAKind(void) const{  //1組3個數字相同
 			num_for_max_times = count[i][0];
 		}
 	}
-	cout<<num_for_max_times<<" "<<max_times<<"\n";
+	//cout<<num_for_max_times<<" "<<max_times<<"\n";
 
 	if(max_times==3)return true;
 	else return false;
@@ -186,7 +212,7 @@ bool Hand:: fourOfAKind(void) const{  //1組4個數字相同
 			num_for_max_times = count[i][0];
 		}
 	}
-	cout<<num_for_max_times<<" "<<max_times<<"\n";
+	//cout<<num_for_max_times<<" "<<max_times<<"\n";
 
 	if(max_times==4)return true;
 	else return false;
@@ -194,17 +220,62 @@ bool Hand:: fourOfAKind(void) const{  //1組4個數字相同
 
 
 bool Hand:: flush(void) const{  //5張花色都相同
-	return false;
+	int suit_base = (*this).hand[0].getSuit();
+	int flag = 0;
+	for(int i=1;  i<5;  i++){
+		if((*this).hand[0].getSuit() != suit_base) flag = 1;
+	}
+
+	if(flag=0) return true;
+	else return false;
 }
 
 
 bool Hand:: straight(void) const{  //5張數字剛好連續 [x.....x+4]
-  	int S=1;
-  	for(int i=1; i < 4; i++) 
-	  	S = ((*this).faceCount[i]%13-(*this).faceCount[i+1]%13)*S;
-  	if(S==1 && ((*this).faceCount[0]%13-(*this).faceCount[1]%13==1 ||(*this).faceCount[0]%13-(*this).faceCount[1]%13==9)) 
-	  	S=1;
-  	else S=0;//若 S = 1, 表示順子
-  	return S; 
+	//計算數字出現次數
+	int count[13][2];
+	for(int i=0;  i<13;  i++){
+		count[i][0] = i;
+		count[i][1] = One_Num_Times((*this).faceCount,  i);
+	}
+
+	int max_times = 0;
+	int num_for_max_times = 0;
+	for(int i=0;  i<13;  i++){
+		if(count[i][1]>max_times)  {
+			max_times = count[i][1];
+			num_for_max_times = count[i][0];
+		}
+	}
+	//cout<<num_for_max_times<<" "<<max_times<<"\n";
+
+	//確保每個數字最高出現次數為1次
+	if(max_times==1){
+		vector< int > arr = (*this).faceCount;
+    	arr = insertionsort(arr);
+  		int max=0, min = 0;
+		int min = arr[0];
+		int max = arr[4];
+		if((max-min)==4)  return true;
+		if (max==12){//k
+			if(min==0){//1
+				if(arr[1]==1 && arr[2]==2 && arr[3]==3)return true;
+				if(arr[1]==1 && arr[2]==2 && arr[3]==11)return true;
+				if(arr[1]==1 && arr[2]==10 && arr[3]==11)return true;
+				if(arr[1]==9 && arr[2]==10 && arr[3]==11)return true;
+
+				//1  2  3  4  k
+				//1  2  3  Q  k
+				//1  2  J  Q  K
+				//1  10 J  Q  K			
+
+			}
+		}		
+	}
+	else 
+		return false;
+
+
+  	return false; 
 }
 //?--------------------------------------------------------------------------------------------------------------

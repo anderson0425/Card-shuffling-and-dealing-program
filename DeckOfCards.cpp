@@ -20,9 +20,9 @@ vector<Card> & reference(vector<Card> &  x){
 DeckOfCards:: DeckOfCards(void){ //!52張卡片，因此會生成有52個card object，並且初始化花色跟數字兩個int。 (0-12跟0-3)
 
     //查看目前分配到的記憶體空間大小
-    cout << "\nSize : " << (*this).deck.size()<<"\n";
-    cout << "Capacity : " << (*this).deck.capacity()<<"\n";
-    cout << "Max_Size : " << (*this).deck.max_size()<<"\n";
+    //cout << "\nSize : " << (*this).deck.size()<<"\n";
+    //cout << "Capacity : " << (*this).deck.capacity()<<"\n";
+    //cout << "Max_Size : " << (*this).deck.max_size()<<"\n";
 
     // fill the array with the values in order.
     //? i / 13 = j
@@ -33,19 +33,19 @@ DeckOfCards:: DeckOfCards(void){ //!52張卡片，因此會生成有52個card ob
 		card_insert.setSuit(i/13); //j
 		card_insert.setFace(i%13); //k
         (*this).deck.push_back(card_insert);  //插入值且自動擴充記憶體  裡面要放符合dtype的資料，在這裡就是card object
-	} 
+	}
 
 	//for(int i=0;  i<52;  i++){  //?i = j * 13 + k
     //    for(int j=0;  j<13;  j++){ //0-12
     //        for(int k=0;  k<4;  k++){//0-4
-	//	        (*this).deck[(13 * j + k)].setSuit(j); 
-	//	        (*this).deck[(13 * j + k)].setFace(k); 
+	//	        (*this).deck[(13 * j + k)].setSuit(j);
+	//	        (*this).deck[(13 * j + k)].setFace(k);
     //            //不能這樣寫  (*this).deck[(13*j+k)].suit = j;  //hi999 會出錯error  因為'int Card::suit' is private within this context
     //            //不能這樣寫  (*this).deck[(13*j+k)].face = k;  //hi999 會出錯error  因為'int Card::face' is private within this context
     //
     //        }
     //    }
-	//} 
+	//}
     // i = j * 13 + k
     // (*this).deck[i].suit = j;  (*this).deck[i].face = k;
 
@@ -57,16 +57,16 @@ DeckOfCards:: DeckOfCards(void){ //!52張卡片，因此會生成有52個card ob
     (*this).currentCard = 0;  //FIXME:假設牌組最上面的牌的index=0，這裡將下一個抽牌的index設為0------使得接下抽出的牌是(*this).deck[i]
 
     //查看目前分配到的記憶體空間大小
-    cout << "\nSize : " << (*this).deck.size()<<"\n";
-    cout << "Capacity : " << (*this).deck.capacity()<<"\n";
-    cout << "Max_Size : " << (*this).deck.max_size()<<"\n";
+    //cout << "\nSize : " << (*this).deck.size()<<"\n";
+    //cout << "Capacity : " << (*this).deck.capacity()<<"\n";
+    //cout << "Max_Size : " << (*this).deck.max_size()<<"\n";
 
 }
 
 //自己新增的--印出牌組
 void DeckOfCards:: print_DeckOfCards(void) const{
 	for(int i=0;   i < ((*this).deck.size());   i++)
-		cout << i << "\t" << (*this).deck[i].toString(); 
+		cout << i << "\t" << (*this).deck[i].toString();
     cout << "\n";
     cout << "currentCard of Deck: " << (*this).currentCard << "\n\n";
 }
@@ -89,8 +89,8 @@ vector<Card> & DeckOfCards:: get_deck_by_reference(void){  //!!!reference這樣�
 void DeckOfCards:: shuffle(void){
 
     //洗牌演算法
-    //    Go through the array and exchange each element 
-    //    with the randomly chosen element in the range 
+    //    Go through the array and exchange each element
+    //    with the randomly chosen element in the range
     //    from itself to the end.
     int random_index = 0;
     int temp_suit, temp_face;
@@ -119,12 +119,12 @@ void DeckOfCards:: shuffle(void){
 }
 
 //發牌   //FIXME:可能發超過1張??
-Card DeckOfCards:: dealCard(void){ 
+Card DeckOfCards:: dealCard(void){
     //int current_index = (*this).currentCard;
     //((*this).currentCard) ++;  //next-index
     //
     ////把那時候在牌組最上面的那一張卡片拿出來---跑去hand object
-    //return (*this).deck[current_index]; 
+    //return (*this).deck[current_index];
 
     return deck[ (*this).currentCard ++ ];  //先return，currentCard再做+1
 }
@@ -137,7 +137,7 @@ bool DeckOfCards:: moreCards(void) const{
         //cout << "\nDeckOfCards is not empty\n";
         cout << "\nnow index of Deck is: "<<(*this).currentCard <<"\n";
         return true;
-    }   
+    }
     else{  //(*this)currentCard >= 52
         cout << "\nDeckOfCards is empty\n";
         return false;
@@ -154,14 +154,14 @@ bool DeckOfCards:: moreCards(void) const{
 //}
 
 //void DeckOfCards::shuffle(){
-//	
+//
 //	srand(time(0));
 //	int swapRandom[52];
-//	
+//
 //	for(int i=1; i<52; i++){
 //		swapRandom[i]= int (rand())%52;
 //	}
-//	
+//
 //	for(int i=0 ;i<52 ;i++){
 //		Card swapcard(0,0);
 //		swapcard=deck[i];
