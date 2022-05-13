@@ -1,8 +1,4 @@
 # Card-shuffling-and-dealing-program
-- 老師當初給的只有header file和friver program，其他都是自己加的
-- header file成員函式及字串裡面的參數是空的，也是自己加的
-
-
 1. **ex10_11.cpp、test_Card.cpp、test_DeckOfCards.cpp是driver program**
 2. Card.cpp 、 Card.h、test_Card
     1. test_Card是用來測試Card object生成及功能是否正常
